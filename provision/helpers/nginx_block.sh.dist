@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+
+nxing_directory="/etc/nginx/sites-available/{{BLOCK_NAME}}"
+
+
+function create_server_block {
+cat <<EOF
+    server {
+        listen 80;
+        listen [::]:80;
+
+        root /vagrant/{{PROJECT_NAME}}/app;
+        index index.html index.htm;
+
+        server_name {{PROJECT_NAME}}.sandbox;
+
+        location / {
+            try_files \$uri \$uri/ =404;
+        }
+    }
+
+EOF
+}
+
+sudo create_server_block > /etc/nginx/sites-available/{{BLOCK_NAME}}
