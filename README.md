@@ -10,6 +10,7 @@ Vagrant project with these technologies:
   -  Redis
   -  Mongo Databae
   -  Nginx
+  -  Java
 
 *  Packages
   - Bower
@@ -17,3 +18,9 @@ Vagrant project with these technologies:
   - Coffeescript
   - Less
   - Npm
+
+*  Log System
+  - Logstash
+  - Elasticsearch
+  - Kibana
+
