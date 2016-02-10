@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
-sudo apt-get update
-
 ##########
 #   INSTALL BOWER ( A package manager for the web)
 #########
+command bower -v $1 > /dev/null
+INSTALLED=$?
 
 echo ">>> Install bower"
-
-npm install -g bower
+if [ $INSTALLED == '127' ]; then
+    echo "Installed"
+    exit
+else
+    sudo apt-get update
+    npm install -g bower
+fi

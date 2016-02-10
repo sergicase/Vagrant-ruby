@@ -1,10 +1,17 @@
 #!/usr/bin/env bash
-sudo apt-get update
-
 ##########
 #   INSTALL GRUNT ( Javascript Task Runner)
 #########
+grunt -v $1 > /dev/null
+INSTALLED=$?
 
 echo ">>> Install grunt"
+if [ $INSTALLED == '127' ]; then
+    echo "installed"
+    exit
+else
+    sudo apt-get update
+    npm install -g grunt-cli
+fi
 
-npm install -g grunt-cli
+

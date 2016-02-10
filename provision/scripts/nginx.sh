@@ -1,25 +1,35 @@
 #!/usr/bin/env bash
 # -qq implies -y --force-yes
-sudo apt-get update
+dpkg -l nginx > /dev/null 2>&1
+INSTALLED=$?
 
 ##########
 #   INSTALL NGINX
 #########
 echo ">>> Installing Nginx"
 
-# Add repo for latest stable nginx
-sudo add-apt-repository -y ppa:nginx/stable
+if [ $INSTALLED == '0' ]; then
+    echo "Installed"
+    exit
+else
 
-# Update Again
-sudo apt-get update
+    sudo apt-get update
 
-# Install Nginx
-sudo apt-get install -qq nginx
+    # Add repo for latest stable nginx
+    sudo add-apt-repository -y ppa:nginx/stable
 
-# Add vagrant user to www-data group
-usermod -a -G www-data vagrant
+    # Update Again
+    sudo apt-get update
 
-# Nginx enabling and disabling virtual hosts
-sudo cp -r /vagrant/provision/helpers/dnshost.sh dnshost;
-sudo chmod guo+x dnshost;
-sudo mv dnshost /usr/local/bin;
+    # Install Nginx
+    sudo apt-get install -qq nginx
+
+    # Add vagrant user to www-data group
+    usermod -a -G www-data vagrant
+
+    # Nginx enabling and disabling virtual hosts
+    sudo cp -r /vagrant/provision/helpers/dnshost.sh dnshost;
+    sudo chmod guo+x dnshost;
+    sudo mv dnshost /usr/local/bin;
+fi
+

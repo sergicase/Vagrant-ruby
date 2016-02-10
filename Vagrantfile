@@ -76,15 +76,12 @@ Vagrant.configure(2) do |config|
   ## Provision Less Packages
   config.vm.provision "shell", path: "provision/scripts/less.sh"
 
-
-  # Provision Ruby Packages
-  config.vm.provision "shell", path: "provision/scripts/ruby.sh", privileged:false
-
-  # Provision Ruby on Rails Packages
-  config.vm.provision "shell", path: "provision/scripts/rails.sh", privileged:false
-
   # Provision Mysql
   config.vm.provision "shell", path: "provision/scripts/mysql.sh", privileged:false
+
+  # Provision Java
+  config.vm.provision "shell", path: "provision/scripts/java.sh", privileged:false
+
 
   # Provision Redis
   config.vm.provision "shell", path: "provision/scripts/redis.sh", privileged:false
@@ -92,8 +89,28 @@ Vagrant.configure(2) do |config|
   # Provision Mongo Database
   config.vm.provision "shell", path: "provision/scripts/mongodb.sh", privileged:false
 
+  # Provision Ruby Packages
+  config.vm.provision "shell", path: "provision/scripts/ruby.sh", privileged:false
 
-  # Provision Projects for this VM
+  # Provision Ruby on Rails Packages
+  config.vm.provision "shell", path: "provision/scripts/rails.sh", privileged:false
+
+
+  #
+  # Log System (ELK) ElasticSearch + Logstash + Kibana (NEED JAVA INSTALLED)
+  #
+
+
+  # Provision ElasticSearch
+  config.vm.provision "shell", path: "provision/scripts/elasticsearch.sh", privileged:false
+
+  # Provision Logstash
+  config.vm.provision "shell", path: "provision/scripts/logstash.sh", privileged:false
+
+  # Provision Kibana
+  config.vm.provision "shell", path: "provision/scripts/kibana.sh", privileged:false
+
+
 
 
 
