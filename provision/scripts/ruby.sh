@@ -1,14 +1,23 @@
-#!/usr/bin/env sh
-sudo apt-get update
+#!/bin/bash
 
 ##########
 #   Install Ruby
 #########
 
-echo ">>> Install Ruby"
+INSTALLED="$(ruby -v)"
 
-curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+if [[ $INSTALLED == *"ruby 2.2"* ]]; then
+    echo "Installed"
+    exit
+else
+    echo ">>> Install Ruby"
 
-sudo \curl -sSL https://get.rvm.io | bash -s stable --ruby;
+    sudo apt-get update
 
-gem install bundle
+    curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+
+    sudo \curl -sSL https://get.rvm.io | bash -s stable --ruby;
+
+    sudo gem install bundle
+fi
+

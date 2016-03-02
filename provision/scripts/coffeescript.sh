@@ -1,17 +1,15 @@
-#!/usr/bin/env bash
+#!/bin/bash
 ##########
 #   INSTALL Coffeescript ( Little language that compiles into JavaScript)
 #########
-coffee -v $1 > /dev/null
-INSTALLED=$?
 
+INSTALLED="$(sudo npm list -g coffee-script)"
 
 echo ">>> Install coffeescript"
-if [ $INSTALLED == '127' ]; then
+if [[ $INSTALLED == *"coffee-script"* ]]; then
     echo "installed"
     exit
 else
     sudo apt-get update
-    npm install -g coffee-script
+    sudo npm install -g coffee-script
 fi
-

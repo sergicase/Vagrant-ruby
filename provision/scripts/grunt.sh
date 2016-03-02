@@ -1,17 +1,16 @@
-#!/usr/bin/env bash
+#!/bin/bash
 ##########
 #   INSTALL GRUNT ( Javascript Task Runner)
 #########
-grunt -v $1 > /dev/null
-INSTALLED=$?
+INSTALLED="$(sudo npm list -g grunt-cli)"
 
 echo ">>> Install grunt"
-if [ $INSTALLED == '127' ]; then
+if [[ $INSTALLED == *"grunt"* ]]; then
     echo "installed"
     exit
 else
     sudo apt-get update
-    npm install -g grunt-cli
+    sudo npm install -g grunt-cli
 fi
 
 

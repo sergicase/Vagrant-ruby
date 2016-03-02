@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 ##########
 #   Ruby on Rails
 #########
@@ -8,7 +8,7 @@ INSTALLED=$?
 
 echo ">>> Install Ruby on Rails"
 if [ $INSTALLED == '0' ]; then
-    echo "installed"
+    echo "Installed"
     exit
 else
     sudo apt-get update

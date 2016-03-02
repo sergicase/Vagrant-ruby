@@ -5,8 +5,6 @@
 dpkg -l mongodb-org > /dev/null 2>&1
 INSTALLED=$?
 
-echo $INSTALLED
-
 echo ">>> Installing MongoDB"
 if [ $INSTALLED == '0' ]; then
     echo "Installed"

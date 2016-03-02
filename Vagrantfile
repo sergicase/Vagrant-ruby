@@ -58,23 +58,23 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", path: "provision/scripts/base.sh", args: [server_timezone]
 
   # Provision Nginx Packages
-  config.vm.provision "shell", path: "provision/scripts/nginx.sh"
+  config.vm.provision "shell", path: "provision/scripts/nginx.sh", privileged:false
 
 
   # Provision Nodejs Packages
-  config.vm.provision "shell", path: "provision/scripts/nodejs.sh"
+  config.vm.provision "shell", path: "provision/scripts/nodejs.sh", privileged:false
 
   ## Provision NPM Packages
-  config.vm.provision "shell", path: "provision/scripts/npm.sh"
+  config.vm.provision "shell", path: "provision/scripts/npm.sh", privileged:false
 
   ## Provision Bower Packages
-  config.vm.provision "shell", path: "provision/scripts/bower.sh"
+  config.vm.provision "shell", path: "provision/scripts/bower.sh", privileged:false
   ## Provision Grunt Packages
-  config.vm.provision "shell", path: "provision/scripts/grunt.sh"
+  config.vm.provision "shell", path: "provision/scripts/grunt.sh", privileged:false
   ## Provision Coffeescript Packages
-  config.vm.provision "shell", path: "provision/scripts/coffeescript.sh"
+  config.vm.provision "shell", path: "provision/scripts/coffeescript.sh", privileged:false
   ## Provision Less Packages
-  config.vm.provision "shell", path: "provision/scripts/less.sh"
+  config.vm.provision "shell", path: "provision/scripts/less.sh", privileged:false
 
   # Provision Mysql
   config.vm.provision "shell", path: "provision/scripts/mysql.sh", privileged:false

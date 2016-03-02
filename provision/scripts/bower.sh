@@ -1,15 +1,15 @@
-#!/usr/bin/env bash
+#!/bin/bash
 ##########
 #   INSTALL BOWER ( A package manager for the web)
 #########
-command bower -v $1 > /dev/null
-INSTALLED=$?
+
+INSTALLED="$(sudo npm list -g bower)"
 
 echo ">>> Install bower"
-if [ $INSTALLED == '127' ]; then
+if [[ $INSTALLED == *"bower"* ]]; then
     echo "Installed"
     exit
 else
     sudo apt-get update
-    npm install -g bower
+    sudo npm install -g bower
 fi
